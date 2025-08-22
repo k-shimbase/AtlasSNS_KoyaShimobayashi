@@ -1,20 +1,20 @@
 <x-logout-layout>
     <!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '〇〇']) !!}
+{!! Form::open(['url' => '/register', 'method' => 'post']) !!}
 
 <h2>新規ユーザー登録</h2>
 
 {{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}
+{{ Form::text('username',null,['class' => 'input', 'required' => true]) }}
 
 {{ Form::label('メールアドレス') }}
-{{ Form::email('email',null,['class' => 'input']) }}
+{{ Form::email('email',null,['class' => 'input', 'required' => true]) }}
 
 {{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+{{ Form::password('password',['class' => 'input', 'required' => true]) }}
 
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+{{ Form::password('password_confirmation',['class' => 'input', 'required' => true]) }}
 
 {{ Form::submit('登録') }}
 

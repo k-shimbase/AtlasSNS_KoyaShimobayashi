@@ -6,7 +6,13 @@
   <!--IEブラウザ対策-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="ページの内容を表す文章" />
+
   <title></title>
+
+  <!--CDN経由CSS読み込み(BootstrapとBootstrap icon)-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!--ローカルCSS読み込み-->
   <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
@@ -25,36 +31,58 @@
 </head>
 
 <body>
+
+  <!--ヘッダー-->
   <header>
     @include('layouts.navigation')
   </header>
-  <!-- Page Content -->
+
+  <!--ページコンテンツ-->
   <div id="row">
+
+    <!--────────────────────────────────────-->
+    <!--◆メインコンテナ(画面左側)            -->
+    <!--────────────────────────────────────-->
     <div id="container">
       {{ $slot }}
     </div>
+
+    <!--────────────────────────────────────-->
+    <!--◆サイドバー(画面右側)                -->
+    <!--────────────────────────────────────-->
     <div id="side-bar">
+
+      <!--◇情報確認エリア-->
       <div id="confirm">
-        <p>〇〇さんの</p>
-        <div>
+        <p>adminさんの</p>
+        <div class="follows-info">
           <p>フォロー数</p>
-          <p>〇〇名</p>
+          <p>12人</p>
         </div>
-        <p class="btn"><a href="">フォローリスト</a></p>
-        <div>
+
+        <p class="btn custom-blue-button follows-btn"><a href="">フォローリスト</a></p>
+        <div class="follows-info">
           <p>フォロワー数</p>
-          <p>〇〇名</p>
+          <p>20人</p>
         </div>
-        <p class="btn"><a href="">フォロワーリスト</a></p>
+
+        <p class="btn custom-blue-button follows-btn"><a href="">フォロワーリスト</a></p>
       </div>
-      <p class="btn"><a href="">ユーザー検索</a></p>
+
+      <!--◇ユーザ検索エリア-->
+      <p class="btn custom-blue-button search-btn"><a href="">ユーザー検索</a></p>
     </div>
   </div>
+
+  <!--フッター-->
   <footer>
   </footer>
+
+  <!--JavaScript-->
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="JavaScriptファイルのURL"></script>
   <script src="JavaScriptファイルのURL"></script>
+
 </body>
 
 </html>

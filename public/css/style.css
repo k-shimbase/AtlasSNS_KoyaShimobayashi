@@ -1,22 +1,180 @@
 @charset "utf-8";
+
+/*───────────────────────────────────────────────────*/
+/* ◆デフォルトタグ                                   */
+/*───────────────────────────────────────────────────*/
 html{
+    font-size: 10px;
 }
+
 body{
+    font-family: "Noto Sans JP", sans-serif;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 /* header */
 header{
     background:#186AC9;
 }
 
-/* main content */
+/*───────────────────────────────────────────────────*/
+/* ◆メインコンテンツ(ヘッダー以外)                     */
+/*───────────────────────────────────────────────────*/
 #row{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row wrap; /* 子要素を左から右へ並べる/かつwrap*/
 }
 #container{
-    flex: 0 0 80%;
+    flex: 0 0 79%;
+    height: 100vh;
 }
 #side-bar{
-    flex: 0 0 19%;
+    flex: 0 0 21%;
     border-left: 1px solid #727272;
+    height: 100vh;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆ヘッダー                                         */
+/*───────────────────────────────────────────────────*/
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    height: 85px;
+    z-index: 100;
+}
+
+/* ヘッダーのテキスト設定 */
+.header-flex p {
+    color: white;
+    font-size: 19px;
+    margin: 0;
+}
+
+/* メインロゴの大きさ */
+.header-flex h1 img {
+    display: block;
+    height: 36px;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆ヘッダーとアコーディオンメニュー共通               */
+/*───────────────────────────────────────────────────*/
+/* メインロゴとアコーディオンメニューのトリガー */
+/* 親: header-flex */
+.accordion-wrapper,
+.header-flex h1 {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: 0 25px;
+    margin: 0;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆アコーディオンメニュー                            */
+/*───────────────────────────────────────────────────*/
+/* 名前/V/icon画像を包括する親 */
+.accordion-trigger {
+    display: flex;
+}
+
+/* 上記のフレックスアイテム */
+/* 親: accordion-trigger */
+.trigger-item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* アコーディオンメニューの設定 */
+/* 親: accordion-wrapper */
+.accordion-content {
+    position: absolute;
+    left: 0;
+    top: 84px;
+    width: 100%;
+    display: none;
+}
+
+/* アコーディオンメニューの各項目の設定 */
+.accordion-content li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    color: #808080;
+
+    font-size: 24px;
+    width: 100%;
+    height: 86px;
+
+    border-top: 2px solid #04235c;
+    border-left: 2px solid #04235c;
+    border-right: 2px solid #04235c;
+}
+
+/* ラストのliに下線を付与する(topとbottomが重なると描画が濃くなってしまう為) */
+.accordion-content li:last-child a {
+    border-bottom: 2px solid #04235c;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆サイドバー/情報確認エリア                         */
+/*───────────────────────────────────────────────────*/
+/* 情報確認エリアの設定 */
+#confirm {
+    border-bottom: 1px solid #808080;
+    padding: 20px;
+}
+
+/* 情報確認エリア内のテキスト設定(青ボタンのp以外) */
+#confirm p:not(.custom-blue-button) {
+    color: #3B3737;
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+/* フォロー数/フォロワー数と数値のフレックス */
+.follows-info {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* 上記のフレックスアイテム */
+.follows-info p {
+    width: 107px;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆青ボタン                                         */
+/*───────────────────────────────────────────────────*/
+/* 青ボタンの枠 */
+.custom-blue-button {
+    background-color: #0656cf;
+}
+
+/* 青ボタン内のテキスト */
+.custom-blue-button a {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* フォロー/フォロワーリストのボタン */
+.follows-btn {
+    margin-left: 120px;
+    margin-top: 2px;
+    margin-bottom: 22px;
+    width: 128px;
+    padding: 5px 0;
+}
+
+/* ユーザ検索ボタン */
+.search-btn {
+    margin: 23px 66px;
+    width: 155px;
+    padding: 6px 0;
 }
