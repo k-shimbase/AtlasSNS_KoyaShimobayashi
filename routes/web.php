@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\FollowsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,12 +22,12 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
-    Route::get('top', [PostsController::class, 'index']);
+    Route::get('top', [PostsController::class, 'index'])->name('auth.home');
 
-    Route::get('profile', [ProfileController::class, 'profile']);
+    Route::get('profile', [ProfileController::class, 'profile'])->name('auth.profile');
 
-    Route::get('search', [UsersController::class, 'index']);
+    Route::get('search', [UsersController::class, 'search'])->name('auth.search');
 
-    Route::get('follow-list', [PostsController::class, 'index']);
-    Route::get('follower-list', [PostsController::class, 'index']);
+    Route::get('follow-list', [FollowsController::class, 'followList'])->name('auth.follow-list');
+    Route::get('follower-list', [FollowsController::class, 'followerList'])->name('auth.follower-list');
 });

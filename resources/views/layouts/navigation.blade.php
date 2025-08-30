@@ -12,13 +12,15 @@
                 <div class="accordion-trigger">
                     <p class="trigger-item"><strong>admin</strong>　さん</p>
                     <p class="trigger-item">V</p>
-                    <p class="trigger-item">icon</p>
+
+                    <!--◇アイコン-->
+                    <div class=trigger-item><img src="{{ asset('images/icon1.png') }}" class="rounded-circle" alt="ICON"></img></div>
                 </div>
 
                 <!--◇アコーディオンメニュー-->
                 <ul class="accordion-content">
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">プロフィール編集</a></li>
+                    <li><a href="{{ route('auth.home') }}">HOME</a></li>
+                    <li><a href="{{ route('auth.profile') }}">プロフィール編集</a></li>
                     <li>
                         <form method="POST" name="logout_form" action="{{ route('logout') }}">
                         @csrf

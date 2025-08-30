@@ -9,13 +9,13 @@ html{
 
 body{
     font-family: "Noto Sans JP", sans-serif;
+    background-color: white;
 }
 
 body::-webkit-scrollbar {
     display: none;
 }
 
-/* header */
 header{
     background:#186AC9;
 }
@@ -27,14 +27,30 @@ header{
     display: flex;
     flex-flow: row wrap; /* 子要素を左から右へ並べる/かつwrap*/
 }
+
 #container{
     flex: 0 0 79%;
     height: 100vh;
 }
+
 #side-bar{
     flex: 0 0 21%;
     border-left: 1px solid #727272;
     height: 100vh;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆全共通                                          */
+/*───────────────────────────────────────────────────*/
+/* アイコンの円の大きさ */
+.rounded-circle {
+    width: 47px;
+    height: 47px;
+}
+
+/* テキストエリアのplaceholder */
+textarea::placeholder {
+    color: #d6d6d6;
 }
 
 /*───────────────────────────────────────────────────*/
@@ -80,6 +96,8 @@ header{
 /* 名前/V/icon画像を包括する親 */
 .accordion-trigger {
     display: flex;
+    align-items: center;
+    margin-left:  6px;
 }
 
 /* 上記のフレックスアイテム */
@@ -96,7 +114,7 @@ header{
     left: 0;
     top: 84px;
     width: 100%;
-    display: none;
+    display: block;
 }
 
 /* アコーディオンメニューの各項目の設定 */
@@ -149,8 +167,9 @@ header{
 }
 
 /*───────────────────────────────────────────────────*/
-/* ◆青ボタン                                         */
+/* ◆サイドバーの青ボタン                              */
 /*───────────────────────────────────────────────────*/
+
 /* 青ボタンの枠 */
 .custom-blue-button {
     background-color: #0656cf;
@@ -160,21 +179,290 @@ header{
 .custom-blue-button a {
     display: block;
     color: #fff;
+
     font-size: 14px;
 }
 
 /* フォロー/フォロワーリストのボタン */
 .follows-btn {
+    width: 128px;
+    padding: 5px 0;
     margin-left: 120px;
     margin-top: 2px;
     margin-bottom: 22px;
-    width: 128px;
-    padding: 5px 0;
 }
 
 /* ユーザ検索ボタン */
 .search-btn {
-    margin: 23px 66px;
     width: 155px;
     padding: 6px 0;
+    margin: 23px 66px;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆メインエリア共通                                  */
+/*───────────────────────────────────────────────────*/
+/* メインエリア上部のレイアウト */
+.main-area {
+    height: 156px;
+    border-bottom: 7px solid #e0e0e0;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆投稿ページのメインエリア                          */
+/*───────────────────────────────────────────────────*/
+/* 投稿記入エリア */
+.post-main {
+    display: flex;
+    padding-top: 29px;
+    padding-bottom: 24px;
+    padding-left: 78px;
+}
+
+/* 投稿記入エリアの各要素(上記のフレックスアイテム) */
+.post-main-content {
+    margin-right: 6px;
+}
+
+/* 投稿記入エリアのテキストエリア */
+.post-main textarea {
+    border: none;
+    resize: none;
+    padding: 10px 10px;
+    font-size: 17px;
+    width: 734px;
+}
+
+/* 投稿ボタン */
+.post-main button {
+    display: block;
+    color: white;
+    align-self: flex-end;
+    font-size: 24px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+}
+
+/* 投稿リストのポスト全体 */
+.post-content {
+    display: flex;
+    color: black;
+    border-bottom: 1px solid #9b9b9b;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 119px;
+    padding-right: 27px;
+}
+
+/* ポストの名前とテキストエリア */
+.post-text-content {
+    margin-left: 14px;
+}
+
+/* ポストの名前表示 */
+.post-name {
+    font-size: 15px;
+    line-height: 18px;
+}
+
+/* ポストのテキストエリア */
+.post-text {
+    font-size: 13px;
+    width: 700px;
+}
+
+/* ポストの投稿日時 */
+.post-date {
+    margin-left: auto;
+    font-size: 13px;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆フォロー/フォロワーリストのメインエリア共通         */
+/*───────────────────────────────────────────────────*/
+/* フォロー/フォロワーリスト画面上部のエリア */
+.follows-main {
+    display: flex;
+}
+
+/* Follow List/Follower Listの親要素(テキストの長さでアイコンとの位置が変動しないようにする処置) */
+.follows-text {
+    width: 258px;
+}
+
+/* Follow List/Followers Listテキスト */
+.follows-text h3 {
+    color: black;
+    margin-top: 27px;
+    margin-left: 81px;
+}
+
+/* フォロー/フォロワーリスト */
+.follows-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    margin-top: 17px;
+    gap: 7px;
+    max-width: 550px;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆ユーザ検索画面                                   */
+/*───────────────────────────────────────────────────*/
+/* 検索欄エリア(画面上部) */
+.search-main {
+    display: flex;
+    align-items: center;
+}
+
+/* 検索欄 */
+.search-main textarea {
+    resize: none;
+    border: 2px solid #a0a0a0;
+    height: 50px;
+    width: 300px;
+    margin-left: 60px;
+    padding-top: 8px;
+    padding-left: 17px;
+    font-size: 18px;
+}
+
+/* 検索欄 */
+.search-main textarea {
+    resize: none;
+    border: 2px solid #a0a0a0;
+    height: 50px;
+    width: 318px;
+    margin-left: 59px;
+    padding-top: 7px;
+    padding-left: 17px;
+    font-size: 19px;
+}
+
+/* 検索ボタン */
+.search-main button {
+    margin-left: 17px;
+    color: white;
+    font-size: 22px;
+}
+
+/* アカウントリストエリア */
+.account-list {
+    max-width: 503px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 16px;
+}
+
+/* アカウント1要素 */
+.account-element {
+    display: flex;
+    align-items: center;
+    padding: 18px 15px;
+}
+
+/* アカウント1要素内のアカウント名 */
+.account-element p {
+    margin: 0;
+    margin-left: 24px;
+    font-size: 20px;
+    color: black;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆フォロー/フォロー解除ボタン共通                    */
+/*───────────────────────────────────────────────────*/
+
+/* 水色ボタン */
+.custom-lblue-button {
+    background-color: #52acff;
+}
+
+/* 赤色ボタン */
+.custom-red-button {
+    background-color: #ed3833;
+}
+
+/* フォロー/フォロー解除ボタン */
+.account-element .account-follows-btn{
+    height: 35px;
+    width: 130px;
+    margin-left: auto;
+    margin-right: 13px;
+    padding-top: 0;
+}
+
+/* フォロー/フォロー解除ボタンのテキスト */
+.account-follows-btn a {
+    color: white;
+    font-size: 15px;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆プロフィール画面                                 */
+/*───────────────────────────────────────────────────*/
+/* プロフィール編集画面 */
+.profile-edit-content {
+    display: flex;
+    width: 717px;
+    margin: 0 auto;
+    margin-top: 52px;
+}
+
+/* プロフィール編集画面 */
+.profile-edit-content img {
+    margin-left: 27px;
+    margin-right: 35px;
+    margin-top: 8px;
+}
+
+/* プロフィール編集項目を包括する要素 */
+.profile-info-content {
+    width: 100%;
+}
+
+/* プロフィール各入力要素(行別) */
+.profile-info-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 26px;
+}
+
+/* プロフィール編集エリアのラベルテキスト */
+.profile-info-item p {
+    color: black;
+    align-self: flex-start;
+    margin: 0;
+    font-size: 21px;
+    width: 390px;
+}
+
+/* プロフィール編集エリアのテキスト入力欄 */
+.profile-info-box {
+    resize: none;
+    height: 38px;
+    width: 100%;
+    border: 1px solid #979797;
+    background-color: #EFEFEF;
+}
+
+/* アイコン画像の入力ボックス */
+.profile-info-box.icon-image {
+    height: 94px;
+}
+
+/* プロフィール更新ボタン */
+.profile-update-btn {
+    display: block;
+    position: relative;
+    background-color: #ed3a50;
+    color: white;
+    margin: 0 auto;
+    padding: 4px 62px;
+    font-size: 16px;
+    left: -66px;
 }

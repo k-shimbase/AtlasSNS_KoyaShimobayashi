@@ -59,18 +59,18 @@
           <p>フォロー数</p>
           <p>12人</p>
         </div>
+        <p class="btn custom-blue-button follows-btn"><a href="{{ route('auth.follow-list') }}">フォローリスト</a></p>
 
-        <p class="btn custom-blue-button follows-btn"><a href="">フォローリスト</a></p>
         <div class="follows-info">
           <p>フォロワー数</p>
           <p>20人</p>
         </div>
+        <p class="btn custom-blue-button follows-btn"><a href="{{ route('auth.follower-list') }}">フォロワーリスト</a></p>
 
-        <p class="btn custom-blue-button follows-btn"><a href="">フォロワーリスト</a></p>
       </div>
 
       <!--◇ユーザ検索エリア-->
-      <p class="btn custom-blue-button search-btn"><a href="">ユーザー検索</a></p>
+      <p class="btn custom-blue-button search-btn"><a href="{{ route('auth.search') }}">ユーザー検索</a></p>
     </div>
   </div>
 
