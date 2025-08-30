@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
         session(['username' => $request->username]);
 
         // ◆addedのURLへリダイレクトする
-        return redirect('added');
+        return redirect()->route('added');
     }
 
     public function added(): View

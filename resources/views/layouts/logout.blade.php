@@ -9,6 +9,10 @@
 
         <title></title>
 
+        <!--CDN経由CSS読み込み(BootstrapとBootstrap icon)-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!--ローカルcss-->
         <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/logout.css') }} ">
@@ -22,16 +26,28 @@
         <!--iphoneのアプリアイコン指定-->
         <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     </head>
+
     <body>
-        <header>
-            <h1><img src="images/atlas.png"></h1>
-            <p>Social Network Service</p>
-        </header>
-        <div id="container">
-            {{ $slot }}
+
+        <div class="body-flex">
+
+            <!--◆ヘッダー-->
+            <header>
+                <h1><img src="images/atlas.png"></h1>
+                <p>Social Network Service</p>
+            </header>
+
+            <!--◆メイン-->
+            <div id="container">
+                {{ $slot }}
+            </div>
+
         </div>
+
+        <!--◆JavaScript-->
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="JavaScriptファイルのURL"></script>
         <script src="JavaScriptファイルのURL"></script>
     </body>
+
 </html>
