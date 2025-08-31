@@ -11,7 +11,10 @@
                 <!--◇アコーディオンメニューのトリガー-->
                 <div class="accordion-trigger">
                     <p class="trigger-item"><strong>admin</strong>　さん</p>
-                    <p class="trigger-item">V</p>
+                    <ul class="trigger-item">
+                        <li class="trigger-left trigger-line"></li>
+                        <li class="trigger-right trigger-line"></li>
+                    </ul>
 
                     <!--◇アイコン-->
                     <div class=trigger-item><img src="{{ asset('images/icon1.png') }}" class="rounded-circle" alt="ICON"></img></div>

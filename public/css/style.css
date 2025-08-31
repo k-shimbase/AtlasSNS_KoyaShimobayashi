@@ -97,7 +97,8 @@ textarea::placeholder {
 .accordion-trigger {
     display: flex;
     align-items: center;
-    margin-left:  6px;
+    cursor: pointer;
+    margin-left:  10px;
 }
 
 /* 上記のフレックスアイテム */
@@ -114,7 +115,7 @@ textarea::placeholder {
     left: 0;
     top: 84px;
     width: 100%;
-    display: block;
+    display: none;
 }
 
 /* アコーディオンメニューの各項目の設定 */
@@ -137,6 +138,44 @@ textarea::placeholder {
 /* ラストのliに下線を付与する(topとbottomが重なると描画が濃くなってしまう為) */
 .accordion-content li:last-child a {
     border-bottom: 2px solid #04235c;
+}
+
+/* アコーディオンメニュー開閉記号のライン */
+.trigger-line {
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    width: 2px;
+    height: 16px;
+    background: white;
+    transition: transform 0.4s ease, left 0.4s ease, right 0.4s ease;
+}
+
+/* 開閉記号の左ライン */
+.trigger-left {
+    position: relative;
+    left: 2px;
+    transform-origin: bottom;
+    transform: rotate(-24deg);
+}
+
+/* 開閉記号の右ライン */
+.trigger-right {
+    position: relative;
+    right: 3px;
+    transform-origin: bottom;
+    transform: rotate(24deg);
+}
+
+/* activeの際のライン逆転 */
+.trigger-left.active {
+    left: -4px;
+    transform: rotate(24deg);
+}
+
+.trigger-right.active {
+    right: -4px;
+    transform: rotate(-24deg);
 }
 
 /*───────────────────────────────────────────────────*/
