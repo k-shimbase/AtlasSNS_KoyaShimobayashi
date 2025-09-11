@@ -54,16 +54,16 @@
 
       <!--◇情報確認エリア-->
       <div id="confirm">
-        <p>adminさんの</p>
+        <p>{{ Auth::user()->username }}さんの</p>
         <div class="follows-info">
           <p>フォロー数</p>
-          <p>12人</p>
+          <p>{{ Auth::user()->followings()->count() }}人</p>
         </div>
         <p class="btn custom-blue-button follows-btn"><a href="{{ route('auth.follow-list') }}">フォローリスト</a></p>
 
         <div class="follows-info">
           <p>フォロワー数</p>
-          <p>20人</p>
+          <p>{{ Auth::user()->followers()->count() }}人</p>
         </div>
         <p class="btn custom-blue-button follows-btn"><a href="{{ route('auth.follower-list') }}">フォロワーリスト</a></p>
 
@@ -79,6 +79,7 @@
   </footer>
 
   <!--JavaScript-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/main.js') }}"></script>

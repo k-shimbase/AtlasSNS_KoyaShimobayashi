@@ -112,9 +112,9 @@ textarea::placeholder {
 /* 親: accordion-wrapper */
 .accordion-content {
     position: absolute;
-    left: 0;
+    right: 0;
     top: 84px;
-    width: 100%;
+    width: 291px;
     display: none;
 }
 
@@ -287,11 +287,13 @@ textarea::placeholder {
 .post-content {
     display: flex;
     color: black;
+    flex-wrap: wrap;
     border-bottom: 1px solid #9b9b9b;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 119px;
     padding-right: 27px;
+    width: 100%;
 }
 
 /* ポストの名前とテキストエリア */
@@ -316,6 +318,94 @@ textarea::placeholder {
     margin-left: auto;
     font-size: 13px;
 }
+
+/* 自分自身のポストであった際の要素を包括する要素 */
+.post-myself-content {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+/* 画像共通指定 */
+.post-myself-item, .modal-edit-execution {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease;
+}
+
+/* 編集ボタン */
+.post-edit { background-image: url('/images/edit.png'); }
+.post-edit:hover { background-image: url('/images/edit_h.png'); }
+
+/* 削除ボタン */
+.post-trash { background-image: url('/images/trash.png'); }
+.post-trash:hover { background-image: url('/images/trash_h.png'); }
+
+/*───────────────────────────────────────────────────*/
+/* ◆投稿ページの編集モーダル                          */
+/*───────────────────────────────────────────────────*/
+/* モーダルのボディ要素 */
+.modal-post-body {
+    padding: 30px 38px;
+}
+
+/* モーダルのテキストエリア */
+.modal-post-body textarea {
+    resize: none;
+    width: 100%;
+    height: 200px;
+    border: 2px solid #c9c9c9;
+    padding: 10px 13px;
+    color: black;
+}
+
+/* 完了ボタンフォーム */
+.modal-edit-execution {
+    display: block;
+    margin-left: auto;
+    border: none;
+    background-color: transparent;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆削除確認ページの編集モーダル                       */
+/*───────────────────────────────────────────────────*/
+/* 削除モーダルのボディ要素 */
+#modal-trash-body {
+    padding: 18px;
+    font-size: 15px;
+    color: black;
+}
+
+/* 削除モーダルのテキスト */
+#modal-trash-body p {
+    margin-bottom: 20px;
+}
+
+/* 削除モーダルのフォーム */
+#modal-trash-form {
+    width: 100%;
+}
+
+/* 削除モーダルのボタンを内包した要素 */
+.trash-buttons {
+    text-align: right;
+}
+
+/* 削除モーダルのOKボタン */
+.trash-yes {
+    background-color: #0656cf;
+    color: white;
+}
+
+/* 削除モーダルのキャンセルボタン */
+.trash-cancel {
+    border: 2px solid #696969;
+}
+
 
 /*───────────────────────────────────────────────────*/
 /* ◆フォロー/フォロワーリストのメインエリア共通         */
