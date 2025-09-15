@@ -1,56 +1,46 @@
 <x-login-layout>
 
     <!--────────────────────────────────────-->
-    <!--◆プロフィール編集エリア              -->
+    <!--◆メインエリア(投稿記入エリア)        -->
     <!--────────────────────────────────────-->
-    <div class="profile-edit-content">
+    <div class="main-area profile-main">
+    </div>
 
-        <!--◆アイコン-->
-        <img src="{{ asset('images/icon1.png') }}" class="rounded-circle" alt="ICON"></img>
+    <!--────────────────────────────────────-->
+    <!--◆投稿表示エリア                     -->
+    <!--────────────────────────────────────-->
+    <div class="post-list">
 
-        <!--◆プロフィール詳細項目-->
-        <form class="profile-info-content" action="" method="POST">
+        @foreach ($posts as $post)
+        <!--◆ポストアイテム-->
+        <div class="post-content">
 
-            <!--◇ユーザー名-->
-            <div class="profile-info-item">
-                <p>user name</p>
-                <textarea class="profile-info-box" name="username"></textarea>
+            <!--◇アイコン-->
+            <img src="{{ asset('images/' . $post->user->icon_image) }}" class="rounded-circle" alt="ICON"></img>
+
+            <div class="post-text-content">
+                <!--◇ユーザ名-->
+                <p class="post-name">{{ $post->user->username }}</p>
+
+                <!--◇投稿内容-->
+                <p class="post-text">{!! nl2br(e($post->post)) !!}</p>
             </div>
 
-            <!--◇メールアドレス-->
-            <div class="profile-info-item">
-                <p>mail address</p>
-                <textarea class="profile-info-box" name="mail_address"></textarea>
+            <!--◇日時-->
+            <p class="post-date">{{ $post->created_at }}</p>
+
+            <!--◇自分自身のポストであった際-->
+            <!--
+            <div class="post-myself-content">
+                @if (Auth::id() === $post->user->id)
+                <p class="post-myself-item post-edit" data-post-id="{{ $post->id }}" data-bs-target="#postEditModal"></p>
+                <p class="post-myself-item post-trash" data-post-id="{{ $post->id }}"></p>
+                @endif
             </div>
+            -->
 
-            <!--◇パスワード-->
-            <div class="profile-info-item">
-                <p>password</p>
-                <textarea class="profile-info-box" name="password"></textarea>
-            </div>
-
-            <!--◇パスワード確認-->
-            <div class="profile-info-item">
-                <p>password confirm</p>
-                <textarea class="profile-info-box" name="password_confirm"></textarea>
-            </div>
-
-            <!--◇bio-->
-            <div class="profile-info-item">
-                <p>bio</p>
-                <textarea class="profile-info-box" name="bio"></textarea>
-            </div>
-
-            <!--◇アイコン画像-->
-            <div class="profile-info-item">
-                <p>icon image</p>
-                <textarea class="profile-info-box icon-image" name="icon image"></textarea>
-            </div>
-
-            <!--◇更新ボタン-->
-            <button type="submit" class="btn profile-update-btn">更新</button>
-
-        </form>
+        </div>
+        @endforeach
 
     </div>
 

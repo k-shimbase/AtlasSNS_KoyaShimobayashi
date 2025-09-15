@@ -23,7 +23,7 @@
                 <!--◇アコーディオンメニュー-->
                 <ul class="accordion-content">
                     <li><a href="{{ route('auth.home') }}">HOME</a></li>
-                    <li><a href="{{ route('auth.profile') }}">プロフィール編集</a></li>
+                    <li><a href="{{ route('auth.profileEdit') }}">プロフィール編集</a></li>
                     <li>
                         <form method="POST" name="logout_form" action="{{ route('logout') }}">
                         @csrf

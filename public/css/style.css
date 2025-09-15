@@ -478,6 +478,14 @@ textarea::placeholder {
     font-size: 22px;
 }
 
+/* 検索ワード */
+.search-word {
+    color: #232323;
+    font-size: 20px;
+    margin-left: 202px;
+    margin-bottom: 0;
+}
+
 /* アカウントリストエリア */
 .account-list {
     max-width: 503px;
@@ -515,19 +523,21 @@ textarea::placeholder {
     background-color: #ed3833;
 }
 
-/* フォロー/フォロー解除ボタン */
-.account-element .account-follows-btn{
+/* フォロー/フォロー解除ボタンのフォーム */
+.follows-form {
     height: 35px;
     width: 130px;
     margin-left: auto;
     margin-right: 13px;
-    padding-top: 0;
 }
 
-/* フォロー/フォロー解除ボタンのテキスト */
-.account-follows-btn a {
+/* フォロー/フォロー解除ボタン */
+.account-follows-btn {
     color: white;
-    font-size: 15px;
+    height: 100%;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
 }
 
 /*───────────────────────────────────────────────────*/
