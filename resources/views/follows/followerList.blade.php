@@ -13,7 +13,7 @@
         <!--◆投稿内容入力エリア-->
         <div class="follows-list">
             @forEach ($users as $user)
-                <img src="{{ asset('images/'. $user->icon_image) }}" class="rounded-circle" alt="ICON"><a href="/prifle/. {{ $user->id }}"></a></img>
+                <a href="/profile/{{ $user->id }}"><img src="{{ asset('images/'. $user->icon_image) }}" class="rounded-circle" alt="ICON"></img></a>
             @endForEach
         </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="post-content">
 
             <!--◇アイコン-->
-            <img src="{{ asset('images/' . $post->user->icon_image) }}" class="rounded-circle" alt="ICON"></img>
+            <a href="/profile/{{ $post->user->id }}"><img src="{{ asset('images/' . $post->user->icon_image) }}" class="rounded-circle" alt="ICON"></img></a>
 
             <div class="post-text-content">
                 <!--◇ユーザ名-->

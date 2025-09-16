@@ -34,7 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::post('posts/trash', [PostsController::class, 'trash'])->name('auth.posts.trash');
 
     //◆プロフィール関連
-    Route::get('profileEdit', [ProfileController::class, 'profileEdit'])->name('auth.profileEdit');
+    Route::post('profileEdit', [ProfileController::class, 'profileEdit'])->name('auth.profileEdit');
+    Route::get('profileEdit', [ProfileController::class, 'showProfileEdit'])->name('auth.showProfileEdit');
     Route::get('profile/{id}', [ProfileController::class, 'profile'])->name('auth.profile');
 
     //◆検索

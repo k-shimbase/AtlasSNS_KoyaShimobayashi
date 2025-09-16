@@ -541,7 +541,58 @@ textarea::placeholder {
 }
 
 /*───────────────────────────────────────────────────*/
-/* ◆プロフィール画面                                 */
+/* ◆プロフィール画面                                  */
+/*───────────────────────────────────────────────────*/
+/* プロフィールエリア */
+.profile-main {
+    display: flex;
+    padding-top: 37px;
+    padding-bottom: 27px;
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+/* プロフィール画面のアイコン */
+.profile-main img {
+    margin-left: 97px;
+}
+
+/* テキスト群を包括するflex要素 */
+.text-items {
+    margin-left: 18px;
+}
+
+/* プロフィール画面に表示される名前とBIOを包括する要素 */
+.profile-texts {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* プロフィール画面テキストの項目名 */
+.text-subtitle {
+    width: 166px;
+}
+
+/* プロフィール画面テキストの値欄 */
+.text-value {
+    width: 500px;
+}
+
+/* プロフィールテキスト */
+.profile-texts p {
+    color: black;
+    font-size: 18px;
+    margin: 0;
+}
+
+/* プロフィール画面のフォロー/フォロー解除ボタンの配置 */
+.profile-follows {
+    margin-right: 0;
+    align-self: flex-end;
+}
+
+/*───────────────────────────────────────────────────*/
+/* ◆プロフィール編集画面                              */
 /*───────────────────────────────────────────────────*/
 /* プロフィール編集画面 */
 .profile-edit-content {
@@ -587,6 +638,9 @@ textarea::placeholder {
     width: 100%;
     border: 1px solid #979797;
     background-color: #EFEFEF;
+    font-size: 16px;
+    padding: 5px 9px;
+    color: black;
 }
 
 /* アイコン画像の入力ボックス */
