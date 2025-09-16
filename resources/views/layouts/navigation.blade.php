@@ -1,4 +1,4 @@
-        <div id="head" class="header-flex">
+        <div id="head" class="header_flex">
 
             <!--◆ ヘッダー左側-->
             <h1>
@@ -6,23 +6,23 @@
             </h1>
 
             <!--◆ヘッダー右側-->
-            <div class="accordion-wrapper">
+            <div class="accordion_wrapper">
 
                 <!--◇アコーディオンメニューのトリガー-->
-                <div class="accordion-trigger">
-                    <p class="trigger-item trigger-username"><strong>{{ Auth::user()->username }}</strong>　さん</p>
-                    <ul class="trigger-item">
-                        <li class="trigger-left trigger-line"></li>
-                        <li class="trigger-right trigger-line"></li>
+                <div class="accordion_trigger">
+                    <p class="trigger_item trigger_username"><strong>{{ Auth::user()->username }}</strong>　さん</p>
+                    <ul class="trigger_item">
+                        <li class="trigger_left trigger_line"></li>
+                        <li class="trigger_right trigger_line"></li>
                     </ul>
 
                     <!--◇アイコン-->
-                    <div class=trigger-item><img src="{{ asset('images/'. Auth::user()->icon_image) }}" class="rounded-circle" alt="ICON"></img></div>
+                    <div class=trigger_item><img src="{{ asset('images/'. Auth::user()->icon_image) }}" class="rounded-circle" alt="ICON"></img></div>
                 </div>
 
                 <!--◇アコーディオンメニュー-->
                 <nav>
-                    <ul class="accordion-content">
+                    <ul class="accordion_content">
                         <li><a href="{{ route('auth.home') }}">HOME</a></li>
                         <li><a href="{{ route('auth.showProfileEdit') }}">プロフィール編集</a></li>
 

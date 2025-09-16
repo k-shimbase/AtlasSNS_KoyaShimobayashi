@@ -50,30 +50,30 @@
     <!--────────────────────────────────────-->
     <!--◆サイドバー(画面右側)                -->
     <!--────────────────────────────────────-->
-    <div id="side-bar">
+    <div id="sidebar">
 
         <!--◇情報確認エリア-->
         <section id="confirm">
             <p>{{ Auth::user()->username }}さんの</p>
 
             <!--◇フォロー数-->
-            <div class="follows-info">
+            <div class="follows_info">
                 <p>フォロー数</p>
                 <p>{{ Auth::user()->followingsCount() }}人</p>
             </div>
-            <div class="btn custom-blue-button follows-btn"><a href="{{ route('auth.follow-list') }}">フォローリスト</a></div>
+            <div class="btn custom_blue_button follows_btn"><a href="{{ route('auth.follow-list') }}">フォローリスト</a></div>
 
             <!--◇フォロワー数-->
-            <div class="follows-info">
+            <div class="follows_info">
                 <p>フォロワー数</p>
                 <p>{{ Auth::user()->followersCount() }}人</p>
             </div>
-            <div class="btn custom-blue-button follows-btn"><a href="{{ route('auth.follower-list') }}">フォロワーリスト</a></div>
+            <div class="btn custom_blue_button follows_btn"><a href="{{ route('auth.follower-list') }}">フォロワーリスト</a></div>
 
         </section>
 
         <!--◇ユーザ検索エリア-->
-        <section class="btn custom-blue-button search-btn">
+        <section class="btn custom_blue_button search_btn">
             <a href="{{ route('auth.search') }}">ユーザー検索</a>
         </section>
     </div>

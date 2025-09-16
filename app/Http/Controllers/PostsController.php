@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostsController extends Controller
 {
@@ -15,10 +16,10 @@ class PostsController extends Controller
 
         try {
             //◇フォローしているユーザ+自身のユーザの取得
-            $users = Auth::user()->getFollowAndOwnId();
+            $userIds = Auth::user()->getFollowAndOwnId();
 
-            //◇フォローユーザの投稿を全取得する
-            $posts = Post::getPostForUsers($users);
+            //◇投稿を全取得する
+            $posts = Post::getPostForUsers($userIds);
 
             //◇表示(posts変数の引継ぎ)
             return view('posts.index', ['posts' => $posts]);

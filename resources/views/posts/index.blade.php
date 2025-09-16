@@ -3,24 +3,24 @@
     <!--────────────────────────────────────-->
     <!--◆モーダル(投稿編集)                  -->
     <!--────────────────────────────────────-->
-    <section class="modal" id="post-edit-modal" tabindex="-1">
+    <section class="modal" id="postEditModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
 
 
-                <div class="modal-post-body">
-                    <form id="modal-post-form" action="{{ route('auth.posts.update') }}" method="POST">
+                <div id="modalPostBody">
+                    <form id="modalPostForm" action="{{ route('auth.posts.update') }}" method="POST">
                         @csrf
 
                         <!--◇既存の投稿内容表示エリア-->
                         <textarea name="post_text"></textarea>
 
                         <!--◇ポストID-->
-                        <input id="hidden_post_id" type="hidden" name="post_id" value="0">
+                        <input id="hiddenPostId" type="hidden" name="post_id" value="0">
 
                         <!--◇編集完了ボタン-->
-                        <button type="submit" class="modal-edit-execution post-edit"></button>
+                        <button type="submit" class="modal_edit_execution post_edit"></button>
                     </form>
                 </div>
 
@@ -33,27 +33,27 @@
     <!--────────────────────────────────────-->
     <!--◆モーダル(削除確認)                  -->
     <!--────────────────────────────────────-->
-    <section class="modal" id="post-trash-modal" tabindex="-1">
+    <section class="modal" id="postTrashModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
 
 
 
-                <div id="modal-trash-body">
+                <div id="modalTrashBody">
                     <p>この投稿を削除します。よろしいでしょうか？</p>
 
-                    <form id="modal-trash-form" action="{{ route('auth.posts.trash') }}" method="POST">
+                    <form id="modalTrashForm" action="{{ route('auth.posts.trash') }}" method="POST">
                         @csrf
 
                         <!--◇ポストID-->
-                        <input id="hidden_trash_id" type="hidden" name="post_id" value="0">
+                        <input id="hiddenTrashId" type="hidden" name="post_id" value="0">
 
-                        <div class="trash-buttons">
+                        <div class="trash_buttons">
                             <!--◇削除了承ボタン-->
-                            <button type="submit" class="btn modal-trash-button trash-yes">OK</button>
+                            <button type="submit" class="btn modal_trash_button trash_yes">OK</button>
 
                             <!--◇キャンセルボタン-->
-                            <button type="button" class="btn modal-trash-button trash-cancel" data-bs-dismiss="modal">キャンセル</button>
+                            <button type="button" class="btn modal_trash_button trash_cancel" data-bs-dismiss="modal">キャンセル</button>
                         </div>
 
                     </form>
@@ -71,48 +71,48 @@
         <!--◆投稿記入エリア                     -->
         <!--────────────────────────────────────-->
         <section>
-            <form class="main-area post-main" action="{{ route('auth.posts') }}" method="POST">
+            <form class="main_area post_main" action="{{ route('auth.posts') }}" method="POST">
                 @csrf
 
                 <!--◆アイコン-->
-                <img src="{{ asset('images/'. Auth::user()->icon_image) }}" class="post-main-content rounded-circle" alt="ICON"></img>
+                <img src="{{ asset('images/'. Auth::user()->icon_image) }}" class="post_main_content rounded-circle" alt="ICON"></img>
 
                 <!--◆投稿内容入力エリア-->
-                <textarea class="post-main-content" name="post_text" placeholder="投稿内容を入力してください。"></textarea>
+                <textarea class="post_main_content" name="post_text" placeholder="投稿内容を入力してください。"></textarea>
 
                 <!--◆投稿ボタン-->
-                <button type="submit" class="btn custom-blue-button post-main-content"><i class="bi bi-send"></i></button>
+                <button type="submit" class="btn custom_blue_button post_main_content"><i class="bi bi-send"></i></button>
             </form>
         </section>
 
         <!--────────────────────────────────────-->
         <!--◆投稿表示エリア                     -->
         <!--────────────────────────────────────-->
-        <section class="post-list">
+        <section class="post_list">
 
             @foreach ($posts as $post)
             <!--◆ポストアイテム-->
-            <div class="post-content">
+            <div class="post_content">
 
                 <!--◇アイコン-->
                 <img src="{{ asset('images/' . $post->user->icon_image) }}" class="rounded-circle" alt="ICON"></img>
 
-                <div class="post-text-content">
+                <div class="post_text_content">
                     <!--◇ユーザ名-->
-                    <p class="post-name">{{ $post->user->username }}</p>
+                    <p class="post_name">{{ $post->user->username }}</p>
 
                     <!--◇投稿内容-->
-                    <p class="post-text">{!! nl2br(e($post->post)) !!}</p>
+                    <p class="post_text">{!! nl2br(e($post->post)) !!}</p>
                 </div>
 
                 <!--◇日時-->
-                <p class="post-date">{{ $post->created_at }}</p>
+                <p class="post_date">{{ $post->created_at }}</p>
 
                 <!--◇自分自身のポストであった際-->
-                <div class="post-myself-content">
+                <div class="post_myself_content">
                     @if (Auth::id() === $post->user->id)
-                    <p class="post-myself-item post-edit" data-post-id="{{ $post->id }}" data-bs-target="#postEditModal"></p>
-                    <p class="post-myself-item post-trash" data-post-id="{{ $post->id }}"></p>
+                    <p class="post_myself_item post_edit" data-post-id="{{ $post->id }}" data-bs-target="#postEditModal"></p>
+                    <p class="post_myself_item post_trash" data-post-id="{{ $post->id }}"></p>
                     @endif
                 </div>
 

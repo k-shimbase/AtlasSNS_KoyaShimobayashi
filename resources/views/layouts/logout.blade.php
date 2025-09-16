@@ -29,7 +29,7 @@
 
     <body>
 
-        <div class="body-flex">
+        <div class="body_flex">
 
             <!--◆ヘッダー-->
             <header>

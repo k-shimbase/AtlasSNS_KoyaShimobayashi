@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use App\Models\User;
 
 class Post extends Model
@@ -32,11 +33,19 @@ class Post extends Model
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     // ◆複数ユーザの投稿全取得
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    public static function getPostForUsers($users) {
+    public static function getPostForUsers($usersOrIds) {
 
-        //◇WHERE 'user_id' IN (m, m, l...) ORDER BY created_at DESC;
-        //◇pluckはコレクションに対してのみ有効
-        return Post::whereIn('user_id', $users->pluck('id'))
+        //◇配列だった際はそのまま配列として定義する
+        if (is_array($usersOrIds)) {
+            $userIds = $usersOrIds;
+
+        //◇インスタンスであった際は配列化する
+        } else {
+            $userIds = $usersOrIds->pluck('id')->toArray();
+        }
+
+        //◇配列としてWHERE INで処理
+        return Post::whereIn('user_id', $userIds)
             ->latest()
             ->get();
     }
@@ -46,7 +55,6 @@ class Post extends Model
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public static function getPostForUniqueUser($user) {
 
-        //◇WHERE 'user_id' IN (m, m, l...) ORDER BY created_at DESC;
         //◇find想定(Userインスタンス)である為pluckは利用できない
         return Post::where('user_id', $user->id)
             ->latest()

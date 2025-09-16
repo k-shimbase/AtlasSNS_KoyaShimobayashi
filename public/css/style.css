@@ -33,16 +33,15 @@ header{
     height: 100vh;
 }
 
-#side-bar{
+#sidebar{
     flex: 0 0 21%;
     border-left: 1px solid #727272;
-    height: 100vh;
 }
 
 /*───────────────────────────────────────────────────*/
 /* ◆全共通                                          */
 /*───────────────────────────────────────────────────*/
-/* アイコンの円の大きさ */
+/* アイコンの円の大きさ(bootstrap) */
 .rounded-circle {
     width: 47px;
     height: 47px;
@@ -56,7 +55,7 @@ textarea::placeholder {
 /*───────────────────────────────────────────────────*/
 /* ◆ヘッダー                                         */
 /*───────────────────────────────────────────────────*/
-.header-flex {
+.header_flex {
     display: flex;
     justify-content: space-between;
     height: 85px;
@@ -64,14 +63,14 @@ textarea::placeholder {
 }
 
 /* ヘッダーのテキスト設定 */
-.header-flex p {
+.header_flex p {
     color: white;
     font-size: 19px;
     margin: 0;
 }
 
 /* メインロゴの大きさ */
-.header-flex h1 img {
+.header_flex h1 img {
     display: block;
     height: 36px;
 }
@@ -81,8 +80,8 @@ textarea::placeholder {
 /*───────────────────────────────────────────────────*/
 /* メインロゴとアコーディオンメニューのトリガー */
 /* 親: header-flex */
-.accordion-wrapper,
-.header-flex h1 {
+.accordion_wrapper,
+.header_flex h1 {
     display: flex;
     position: relative;
     align-items: center;
@@ -94,7 +93,7 @@ textarea::placeholder {
 /* ◆アコーディオンメニュー                            */
 /*───────────────────────────────────────────────────*/
 /* 名前/V/icon画像を包括する親 */
-.accordion-trigger {
+.accordion_trigger {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -103,14 +102,14 @@ textarea::placeholder {
 
 /* 上記のフレックスアイテム */
 /* 親: accordion-trigger */
-.trigger-item {
+.trigger_item {
     padding-left: 10px;
     padding-right: 10px;
 }
 
 /* アコーディオンメニューの設定 */
 /* 親: accordion-wrapper */
-.accordion-content {
+.accordion_content {
     position: absolute;
     right: 0;
     top: 84px;
@@ -119,8 +118,8 @@ textarea::placeholder {
 }
 
 /* アコーディオンメニューの各項目の設定 */
-.accordion-content li a,
-.accordion-content li button {
+.accordion_content li a,
+.accordion_content li button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,7 +136,7 @@ textarea::placeholder {
 }
 
 /* アコーディオンメニュー開閉記号のライン */
-.trigger-line {
+.trigger_line {
     display: inline-block;
     position: relative;
     top: 7px;
@@ -148,7 +147,7 @@ textarea::placeholder {
 }
 
 /* 開閉記号の左ライン */
-.trigger-left {
+.trigger_left {
     position: relative;
     left: 2px;
     transform-origin: bottom;
@@ -156,7 +155,7 @@ textarea::placeholder {
 }
 
 /* 開閉記号の右ライン */
-.trigger-right {
+.trigger_right {
     position: relative;
     right: 3px;
     transform-origin: bottom;
@@ -164,12 +163,12 @@ textarea::placeholder {
 }
 
 /* activeの際のライン逆転 */
-.trigger-left.active {
+.trigger_left.active {
     left: -4px;
     transform: rotate(24deg);
 }
 
-.trigger-right.active {
+.trigger_right.active {
     right: -4px;
     transform: rotate(-24deg);
 }
@@ -184,20 +183,20 @@ textarea::placeholder {
 }
 
 /* 情報確認エリア内のテキスト設定(青ボタンのp以外) */
-#confirm p:not(.custom-blue-button) {
+#confirm p:not(.custom_blue_button) {
     color: #3B3737;
     font-size: 16px;
     margin-bottom: 14px;
 }
 
 /* フォロー数/フォロワー数と数値のフレックス */
-.follows-info {
+.follows_info {
     display: flex;
     justify-content: flex-start;
 }
 
 /* 上記のフレックスアイテム */
-.follows-info p {
+.follows_info p {
     width: 107px;
 }
 
@@ -206,12 +205,12 @@ textarea::placeholder {
 /*───────────────────────────────────────────────────*/
 
 /* 青ボタンの枠 */
-.custom-blue-button {
+.custom_blue_button {
     background-color: #0656cf;
 }
 
 /* 青ボタン内のテキスト */
-.custom-blue-button a {
+.custom_blue_button a {
     display: block;
     color: #fff;
 
@@ -219,7 +218,7 @@ textarea::placeholder {
 }
 
 /* フォロー/フォロワーリストのボタン */
-.follows-btn {
+.follows_btn {
     width: 128px;
     padding: 5px 0;
     margin-left: 120px;
@@ -228,7 +227,7 @@ textarea::placeholder {
 }
 
 /* ユーザ検索ボタン */
-.search-btn {
+.search_btn {
     width: 155px;
     padding: 6px 0;
     margin: 23px 66px;
@@ -238,7 +237,7 @@ textarea::placeholder {
 /* ◆メインエリア共通                                  */
 /*───────────────────────────────────────────────────*/
 /* メインエリア上部のレイアウト */
-.main-area {
+.main_area {
     height: 156px;
     border-bottom: 7px solid #e0e0e0;
 }
@@ -247,7 +246,7 @@ textarea::placeholder {
 /* ◆投稿ページのメインエリア                          */
 /*───────────────────────────────────────────────────*/
 /* 投稿記入エリア */
-.post-main {
+.post_main {
     display: flex;
     padding-top: 29px;
     padding-bottom: 24px;
@@ -255,12 +254,12 @@ textarea::placeholder {
 }
 
 /* 投稿記入エリアの各要素(上記のフレックスアイテム) */
-.post-main-content {
+.post_main_content {
     margin-right: 6px;
 }
 
 /* 投稿記入エリアのテキストエリア */
-.post-main textarea {
+.post_main textarea {
     border: none;
     resize: none;
     padding: 10px 10px;
@@ -269,7 +268,7 @@ textarea::placeholder {
 }
 
 /* 投稿ボタン */
-.post-main button {
+.post_main button {
     display: block;
     color: white;
     align-self: flex-end;
@@ -280,7 +279,7 @@ textarea::placeholder {
 }
 
 /* 投稿リストのポスト全体 */
-.post-content {
+.post_content {
     display: flex;
     color: black;
     flex-wrap: wrap;
@@ -293,37 +292,37 @@ textarea::placeholder {
 }
 
 /* ポストの名前とテキストエリア */
-.post-text-content {
+.post_text_content {
     margin-left: 14px;
 }
 
 /* ポストの名前表示 */
-.post-name {
+.post_name {
     font-size: 15px;
     line-height: 18px;
 }
 
 /* ポストのテキストエリア */
-.post-text {
+.post_text {
     font-size: 13px;
     width: 700px;
 }
 
 /* ポストの投稿日時 */
-.post-date {
+.post_date {
     margin-left: auto;
     font-size: 13px;
 }
 
 /* 自分自身のポストであった際の要素を包括する要素 */
-.post-myself-content {
+.post_myself_content {
     display: flex;
     justify-content: flex-end;
     width: 100%;
 }
 
 /* 画像共通指定 */
-.post-myself-item, .modal-edit-execution {
+.post_myself_item, .modal_edit_execution {
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -333,23 +332,23 @@ textarea::placeholder {
 }
 
 /* 編集ボタン */
-.post-edit { background-image: url('/images/edit.png'); }
-.post-edit:hover { background-image: url('/images/edit_h.png'); }
+.post_edit { background-image: url('/images/edit.png'); }
+.post_edit:hover { background-image: url('/images/edit_h.png'); }
 
 /* 削除ボタン */
-.post-trash { background-image: url('/images/trash.png'); }
-.post-trash:hover { background-image: url('/images/trash_h.png'); }
+.post_trash { background-image: url('/images/trash.png'); }
+.post_trash:hover { background-image: url('/images/trash_h.png'); }
 
 /*───────────────────────────────────────────────────*/
 /* ◆投稿ページの編集モーダル                          */
 /*───────────────────────────────────────────────────*/
 /* モーダルのボディ要素 */
-.modal-post-body {
+#modalPostBody {
     padding: 30px 38px;
 }
 
 /* モーダルのテキストエリア */
-.modal-post-body textarea {
+#modalPostBody textarea {
     resize: none;
     width: 100%;
     height: 200px;
@@ -359,7 +358,7 @@ textarea::placeholder {
 }
 
 /* 完了ボタンフォーム */
-.modal-edit-execution {
+.modal_edit_execution {
     display: block;
     margin-left: auto;
     border: none;
@@ -370,35 +369,35 @@ textarea::placeholder {
 /* ◆削除確認ページの編集モーダル                       */
 /*───────────────────────────────────────────────────*/
 /* 削除モーダルのボディ要素 */
-#modal-trash-body {
+#modalTrashBody {
     padding: 18px;
     font-size: 15px;
     color: black;
 }
 
 /* 削除モーダルのテキスト */
-#modal-trash-body p {
+#modalTrashBody p {
     margin-bottom: 20px;
 }
 
 /* 削除モーダルのフォーム */
-#modal-trash-form {
+#modalTrashForm {
     width: 100%;
 }
 
 /* 削除モーダルのボタンを内包した要素 */
-.trash-buttons {
+.trash_buttons {
     text-align: right;
 }
 
 /* 削除モーダルのOKボタン */
-.trash-yes {
+.trash_yes {
     background-color: #0656cf;
     color: white;
 }
 
 /* 削除モーダルのキャンセルボタン */
-.trash-cancel {
+.trash_cancel {
     border: 2px solid #696969;
 }
 
@@ -407,24 +406,24 @@ textarea::placeholder {
 /* ◆フォロー/フォロワーリストのメインエリア共通         */
 /*───────────────────────────────────────────────────*/
 /* フォロー/フォロワーリスト画面上部のエリア */
-.follows-main {
+.follows_main {
     display: flex;
 }
 
 /* Follow List/Follower Listの親要素(テキストの長さでアイコンとの位置が変動しないようにする処置) */
-.follows-text {
+.follows_text {
     width: 258px;
 }
 
 /* Follow List/Followers Listテキスト */
-.follows-text h3 {
+.follows_text h3 {
     color: black;
     margin-top: 27px;
     margin-left: 81px;
 }
 
 /* フォロー/フォロワーリスト */
-.follows-list {
+.follows_list {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -438,13 +437,13 @@ textarea::placeholder {
 /* ◆ユーザ検索画面                                   */
 /*───────────────────────────────────────────────────*/
 /* 検索欄エリア(画面上部) */
-.search-main {
+.search_main {
     display: flex;
     align-items: center;
 }
 
 /* 検索欄 */
-.search-main textarea {
+.search_main textarea {
     resize: none;
     border: 2px solid #a0a0a0;
     height: 50px;
@@ -456,7 +455,7 @@ textarea::placeholder {
 }
 
 /* 検索欄 */
-.search-main textarea {
+.search_main textarea {
     resize: none;
     border: 2px solid #a0a0a0;
     height: 50px;
@@ -468,14 +467,14 @@ textarea::placeholder {
 }
 
 /* 検索ボタン */
-.search-main button {
+.search_main button {
     margin-left: 17px;
     color: white;
     font-size: 22px;
 }
 
 /* 検索ワード */
-.search-word {
+.search_word {
     color: #232323;
     font-size: 20px;
     margin-left: 202px;
@@ -483,7 +482,7 @@ textarea::placeholder {
 }
 
 /* アカウントリストエリア */
-.account-list {
+.account_list {
     max-width: 503px;
     display: block;
     margin: 0 auto;
@@ -491,14 +490,14 @@ textarea::placeholder {
 }
 
 /* アカウント1要素 */
-.account-element {
+.account_element {
     display: flex;
     align-items: center;
     padding: 18px 15px;
 }
 
 /* アカウント1要素内のアカウント名 */
-.account-element p {
+.account_element p {
     margin: 0;
     margin-left: 24px;
     font-size: 20px;
@@ -510,17 +509,17 @@ textarea::placeholder {
 /*───────────────────────────────────────────────────*/
 
 /* 水色ボタン */
-.custom-lblue-button {
+.custom_lblue_button {
     background-color: #52acff;
 }
 
 /* 赤色ボタン */
-.custom-red-button {
+.custom_red_button {
     background-color: #ed3833;
 }
 
 /* フォロー/フォロー解除ボタンのフォーム */
-.follows-form {
+.follows_form {
     height: 35px;
     width: 130px;
     margin-left: auto;
@@ -528,7 +527,7 @@ textarea::placeholder {
 }
 
 /* フォロー/フォロー解除ボタン */
-.account-follows-btn {
+.account_follows_btn {
     color: white;
     height: 100%;
     width: 100%;
@@ -540,7 +539,7 @@ textarea::placeholder {
 /* ◆プロフィール画面                                  */
 /*───────────────────────────────────────────────────*/
 /* プロフィールエリア */
-.profile-main {
+.profile_main {
     display: flex;
     padding-top: 37px;
     padding-bottom: 27px;
@@ -549,40 +548,40 @@ textarea::placeholder {
 }
 
 /* プロフィール画面のアイコン */
-.profile-main img {
+.profile_main img {
     margin-left: 97px;
 }
 
 /* テキスト群を包括するflex要素 */
-.text-items {
+.text_items {
     margin-left: 18px;
 }
 
 /* プロフィール画面に表示される名前とBIOを包括する要素 */
-.profile-texts {
+.profile_texts {
     display: flex;
     margin-bottom: 20px;
 }
 
 /* プロフィール画面テキストの項目名 */
-.text-subtitle {
+.text_subtitle {
     width: 166px;
 }
 
 /* プロフィール画面テキストの値欄 */
-.text-value {
+.text_value {
     width: 500px;
 }
 
 /* プロフィールテキスト */
-.profile-texts p {
+.profile_texts p {
     color: black;
     font-size: 18px;
     margin: 0;
 }
 
 /* プロフィール画面のフォロー/フォロー解除ボタンの配置 */
-.profile-follows {
+.profile_follows {
     margin-right: 0;
     align-self: flex-end;
 }
@@ -591,7 +590,7 @@ textarea::placeholder {
 /* ◆プロフィール編集画面                              */
 /*───────────────────────────────────────────────────*/
 /* プロフィール編集画面 */
-.profile-edit-content {
+.profile_edit_content {
     display: flex;
     width: 717px;
     margin: 0 auto;
@@ -599,19 +598,19 @@ textarea::placeholder {
 }
 
 /* プロフィール編集画面 */
-.profile-edit-content img {
+.profile_edit_content img {
     margin-left: 27px;
     margin-right: 35px;
     margin-top: 8px;
 }
 
 /* プロフィール編集項目を包括する要素 */
-.profile-info-content {
+.profile_info_content {
     width: 100%;
 }
 
 /* プロフィール各入力要素(行別) */
-.profile-info-item {
+.profile_info_item {
     display: flex;
     align-items: center;
     padding: 10px 0;
@@ -619,7 +618,7 @@ textarea::placeholder {
 }
 
 /* プロフィール編集エリアのラベルテキスト */
-.profile-info-item p {
+.profile_info_item p {
     color: black;
     align-self: flex-start;
     margin: 0;
@@ -628,7 +627,7 @@ textarea::placeholder {
 }
 
 /* プロフィール編集エリアのテキスト入力欄 */
-.profile-info-box {
+.profile_info_box {
     resize: none;
     height: 38px;
     width: 100%;
@@ -640,12 +639,12 @@ textarea::placeholder {
 }
 
 /* アイコン画像の入力ボックス */
-.profile-info-box.icon-image {
+.profile_info_box.icon_image {
     height: 94px;
 }
 
 /* プロフィール更新ボタン */
-.profile-update-btn {
+.profile_update_btn {
     display: block;
     position: relative;
     background-color: #ed3a50;

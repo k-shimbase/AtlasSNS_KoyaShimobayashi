@@ -83,9 +83,13 @@ class User extends Authenticatable
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function getFollowAndOwnId() {
 
-        //◇フォローしているユーザに加えて自身のidをorで条件に加味している
-        //◇usersとfollowsのテーブルで同名のidカラムが二つある為、users.idで明示的に記述している
-        return $this->followings()->orWhere('users.id', $this->id)->get();
+        //◇usersとfollowsのテーブルで同名のidカラムが二つある為、users.idで明示的に記述している/[n, m, l]のような配列形式で取得する
+        $userIds = $this->followings()->pluck('users.id')->toArray();
+
+        //◇配列に自身のIDを追加する
+        $userIds[] = $this->id;
+
+        return $userIds;
     }
 
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

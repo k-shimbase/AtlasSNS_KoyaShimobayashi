@@ -21,7 +21,7 @@ body{
 /* ◆共通箇所                                         */
 /*───────────────────────────────────────────────────*/
 /* 縦の配置 */
-.body-flex {
+.body_flex {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -55,7 +55,7 @@ header p {
 /* ◆ログイン画面                                     */
 /*───────────────────────────────────────────────────*/
 /* フォームの背景 */
-.form-content {
+.form_content {
     display: flex;
     flex-direction: column;
     background-color: rgba(37, 37, 37, 0.27);
@@ -84,12 +84,12 @@ h2.subtitle {
 }
 
 /* ラベルテキスト */
-.label-text {
+.label_text {
     margin: 0;
 }
 
 /* 入力ボックス */
-.input-box {
+.input_box {
     margin-bottom: 21px;
     height: 38px;
     border: 1px solid #9b9b9b;
@@ -99,7 +99,7 @@ h2.subtitle {
 }
 
 /* ボタン */
-.login-register-button {
+.login_register_button {
     background-color: #ed3a50;
     color: white;
     font-size: 20px;
@@ -108,28 +108,28 @@ h2.subtitle {
 }
 
 /* submit用ボタン配置 */
-.submit-button {
+.submit_button {
     margin-left: auto;
     margin-bottom: 40px;
 }
 
 /* フッターテキストを内包する要素 */
-.footer-text {
+.footer_text {
     margin: 0 auto;
 }
 
 /* テキストの大きさ指定(footer-textと併用) */
-.text-small {
+.text_small {
     font-size: 15px;
 }
 
 /* テキストの大きさ指定(footer-textと併用) */
-.text-medium {
+.text_medium {
     font-size: 20px;
 }
 
 /* フッターテキスト */
-.footer-text a {
+.footer_text a {
     color: white;
 }
 
@@ -137,7 +137,7 @@ h2.subtitle {
 /* ◆added画面                                       */
 /*───────────────────────────────────────────────────*/
 /* 上部のテキスト */
-.texts-box {
+.texts_box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -146,28 +146,28 @@ h2.subtitle {
 }
 
 /* added画面共有pタグ設定 */
-.texts-box p {
+.texts_box p {
     margin: 0;
 }
 
 /* 上部のテキストを指定した設定 */
-.text-first p {
+.text_first p {
     font-size: 18px;
 }
 
 /* 上部のテキストを指定した設定 */
-.text-second p {
+.text_second p {
     font-size: 17px;
 }
 
 /* ログイン画面へと遷移するボタン */
-.to-login-button {
+.to_login_button {
     margin: 0 auto;
     margin-top: 30px;
 }
 
 /* ログイン画面へと遷移するテキスト */
-.to-login-button a {
+.to_login_button a {
     color: white;
     font-size: 16px;
 }

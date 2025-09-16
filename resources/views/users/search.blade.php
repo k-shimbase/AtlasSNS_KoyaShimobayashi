@@ -5,17 +5,17 @@
         <!--◆ユーザ検索欄エリア                  -->
         <!--────────────────────────────────────-->
         <section>
-            <form class="main-area search-main" action="{{ route('auth.search') }}" method="GET">
+            <form class="main_area search_main" action="{{ route('auth.search') }}" method="GET">
 
                 <!--◆検索内容入力エリア-->
-                <textarea class="form-control" name="search_text" placeholder="ユーザー名"></textarea>
+                <textarea class="form_control" name="search_text" placeholder="ユーザー名"></textarea>
 
                 <!--◆検索ボタン-->
-                <button type="submit" class="btn custom-blue-button"><i class="bi bi-search"></i></button>
+                <button type="submit" class="btn custom_blue_button"><i class="bi bi-search"></i></button>
 
                 <!--◆検索ワード-->
                 @if (!empty($search_text))
-                    <p class="search-word">検索ワード：{{ $search_text }}</p>
+                    <p class="search_word">検索ワード：{{ $search_text }}</p>
                 @endif
             </form>
         </section>
@@ -23,11 +23,11 @@
         <!--────────────────────────────────────-->
         <!--◆アカウント表示エリア                -->
         <!--────────────────────────────────────-->
-        <section class="account-list">
+        <section class="account_list">
 
             @foreach ($users as $user)
             <!--◆アカウント1要素-->
-            <div class="account-element">
+            <div class="account_element">
 
                 <!--◇アイコン-->
                 <img src="{{ asset('images/'. $user->icon_image) }}" class="rounded-circle" alt="ICON"></img>
@@ -37,14 +37,14 @@
 
                 <!--◇フォロー/フォロー解除ボタン-->
                 @if (Auth::user()->isFollowing($user))
-                    <form class="follows-form" action="{{ route('auth.follow.cancel', ['user' => $user->id]) }}" method="POST">
+                    <form class="follows_form" action="{{ route('auth.follow.cancel', ['user' => $user->id]) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn custom-red-button account-follows-btn">フォロー解除</button>
+                        <button type="submit" class="btn custom_red_button account_follows_btn">フォロー解除</button>
                     </form>
                 @else
-                    <form class="follows-form" action="{{ route('auth.follow.store', ['user' => $user->id]) }}" method="POST">
+                    <form class="follows_form" action="{{ route('auth.follow.store', ['user' => $user->id]) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn custom-lblue-button account-follows-btn">フォローする</button>
+                        <button type="submit" class="btn custom_lblue_button account_follows_btn">フォローする</button>
                     </form>
                 @endif
 
