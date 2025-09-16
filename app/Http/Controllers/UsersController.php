@@ -15,20 +15,15 @@ class UsersController extends Controller
 
         $searchText = $request->search_text;
 
-            //search_textキーが空ではない際
-        if (!empty($searchText)) {
-            $users = User::where('id', '!=', Auth::id())
-                ->where('username', 'like', '%' . $searchText . '%')
-                ->get();
+        try {
+            //◆検索結果のユーザ取得(Auth::id()は自身のIDを検索結果から除外する為の指定)
+            $users = User::getSearchUser($searchText, Auth::id());
 
-            //search_textキーが空の際
-        } else {
-            $users = User::where('id', '!=', Auth::id())
-                ->get();
+            //◆表示
+            return view('users.search', ['users' => $users, 'search_text' => $searchText]);
 
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
         }
-
-            //表示
-        return view('users.search', ['users' => $users, 'search_text' => $searchText]);
     }
 }

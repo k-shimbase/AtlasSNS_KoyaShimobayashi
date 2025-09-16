@@ -13,18 +13,19 @@ class PostsController extends Controller
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function index(){
 
-        //◇フォローしているユーザのidの取得(かつ自分自身のidも配列へと格納する)
-        //◇usersとfollowsで同名のidカラムが二つある為、users.idで明示的に記述している
-        $users = Auth::user()->followings()->pluck('users.id')->toArray(); //配列で取得[n, m, l]など
-        $users[] = Auth::id();
+        try {
+            //◇フォローしているユーザ+自身のユーザの取得
+            $users = Auth::user()->getFollowAndOwnId();
 
-        //◇WHERE 'user_id' IN (m, m, l...) ORDER BY created_at DESC;
-        $posts = Post::whereIn('user_id', $users)
-            ->latest()
-            ->get();
+            //◇フォローユーザの投稿を全取得する
+            $posts = Post::getPostForUsers($users);
 
-        //◇表示(posts変数の引継ぎ)
-        return view('posts.index', ['posts' => $posts]);
+            //◇表示(posts変数の引継ぎ)
+            return view('posts.index', ['posts' => $posts]);
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
+        }
     }
 
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -37,14 +38,19 @@ class PostsController extends Controller
             'post_text' => 'required|max:150',
         ]);
 
-        //◇ポスト記録(insert)
-        Post::create([
-            'user_id' => auth()->id(),
-            'post' => $request->post_text,
-        ]);
+        try {
+            //◇ポスト記録(insert)
+            Post::create([
+                'user_id' => auth()->id(),
+                'post' => $request->post_text,
+            ]);
 
-        //◇リダイレクト
-        return redirect()->route('auth.home');
+            //◇リダイレクト
+            return redirect()->route('auth.home');
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
+        }
     }
 
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -52,13 +58,18 @@ class PostsController extends Controller
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function modalTextPut(Request $request) {
 
-        //◇pri key(id)の値で探す
-        $post = Post::find($request->post_id);
+        try {
+            //◇pri key(id)の値で探す
+            $post = Post::find($request->post_id);
 
-        //◇json形式でpostを返す('変数名' => $postオブジェクト->カラム名)
-        return response()->json([
-            'post' => $post->post,
-        ]);
+            //◇json形式でpostを返す('変数名' => $postオブジェクト->カラム名)
+            return response()->json([
+                'post' => $post->post,
+            ]);
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
+        }
     }
 
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -66,20 +77,25 @@ class PostsController extends Controller
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function update(Request $request) {
 
-        //◇pri key(id)の値で探す
-        $post = Post::find($request->post_id);
+        try {
+            //◇pri key(id)の値で探す
+            $post = Post::find($request->post_id);
 
-        //◇バリデーション設定
-        $request->validate([
-            'post_text' => 'required|max:150',
-        ]);
+            //◇バリデーション設定
+            $request->validate([
+                'post_text' => 'required|max:150',
+            ]);
 
-        //◇更新
-        $post->post = $request->post_text;
-        $post->save();
+            //◇更新
+            $post->post = $request->post_text;
+            $post->save();
 
-        //◇json形式でpostを返す('変数名' => $postオブジェクト->カラム名)
-        return redirect()->route('auth.home');
+            //◇json形式でpostを返す('変数名' => $postオブジェクト->カラム名)
+            return redirect()->route('auth.home');
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
+        }
     }
 
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -87,13 +103,18 @@ class PostsController extends Controller
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function trash(Request $request) {
 
-        //◇pri key(id)の値で探す
-        $post = Post::find($request->post_id);
+        try {
+            //◇pri key(id)の値で探す
+            $post = Post::find($request->post_id);
 
-        //◇削除
-        $post->delete();
+            //◇削除
+            $post->delete();
 
-        //◇リダイレクト
-        return redirect()->route('auth.home');
+            //◇リダイレクト
+            return redirect()->route('auth.home');
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
+        }
     }
 }

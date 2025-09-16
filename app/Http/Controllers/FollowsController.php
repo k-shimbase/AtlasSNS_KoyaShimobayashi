@@ -15,6 +15,7 @@ class FollowsController extends Controller
     //フォロー
     public function store(User $user)
     {
+        //リレーション経由のattach/detachはLaravel側でテーブルへの操作を全て処理してくれる(例外処理含めて)/故にQueryExceptionは不必要
         Auth::user()->followings()->syncWithoutDetaching([$user->id]); //既にフォロー済みであったとしてもエラーが起きなくなる
         return back();
     }
@@ -22,6 +23,7 @@ class FollowsController extends Controller
     //フォロー解除
     public function cancel(User $user)
     {
+        //リレーション経由のattach/detachはLaravel側でテーブルへの操作を全て処理してくれる(例外処理含めて)/故にQueryExceptionは不必要
         Auth::user()->followings()->detach($user->id);
         return back();
     }
@@ -31,15 +33,19 @@ class FollowsController extends Controller
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function followList(){
 
-        //◇フォローしているユーザの取得
-        $users = Auth::user()->followings()->get();
+        try {
 
-        //◇WHERE 'user_id' IN (m, m, l...) ORDER BY created_at DESC;
-        $posts = Post::whereIn('user_id', $users->pluck('id'))
-            ->latest()
-            ->get();
+            //◇フォローしているユーザの取得
+            $users = Auth::user()->followings()->get();
 
-        return view('follows.followList', ['users' => $users, 'posts' => $posts]);
+            //◇フォローユーザの投稿を全取得する
+            $posts = Post::getPostForUsers($users);
+
+            return view('follows.followList', ['users' => $users, 'posts' => $posts]);
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
+        }
     }
 
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -47,14 +53,18 @@ class FollowsController extends Controller
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function followerList(){
 
-        //◇自身をフォローしているユーザの取得
-        $users = Auth::user()->followers()->get();
+        try {
 
-        //◇WHERE 'user_id' IN (m, m, l...) ORDER BY created_at DESC;
-        $posts = Post::whereIn('user_id', $users->pluck('id'))
-            ->latest()
-            ->get();
+            //◇自身をフォローしているユーザの取得
+            $users = Auth::user()->followers()->get();
 
-        return view('follows.followerList', ['users' => $users, 'posts' => $posts]);
+            //◇フォロワーユーザの投稿を全取得する
+            $posts = Post::getPostForUsers($users);
+
+            return view('follows.followerList', ['users' => $users, 'posts' => $posts]);
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
+        }
     }
 }

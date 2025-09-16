@@ -1,19 +1,22 @@
 <x-logout-layout>
 
-    <!-- 適切なURLを入力してください -->
-    {!! Form::open(['url' => '/login', 'method' => 'post', 'class' => 'form-content']) !!}
+    <main>
 
-        <p class="subtitle">AtlasSNSへようこそ</p>
+        {!! Form::open(['url' => '/login', 'method' => 'post', 'class' => 'form-content']) !!}
 
-        {{ Form::label('email','mail address',['class' => 'label-text']) }}
-        {{ Form::text('email',null,['class' => 'input input-box', 'required' => true]) }}
-        {{ Form::label('password','password',['class' => 'label-text']) }}
-        {{ Form::password('password',['class' => 'input input-box', 'required' => true]) }}
+            <p class="subtitle">AtlasSNSへようこそ</p>
 
-        {{ Form::submit('LOGIN',['class' => 'btn submit-button login-register-button']) }}
+            {{ Form::label('email','mail address',['class' => 'label-text']) }}
+            {{ Form::text('email',null,['class' => 'input input-box', 'required' => true]) }}
+            {{ Form::label('password','password',['class' => 'label-text']) }}
+            {{ Form::password('password',['class' => 'input input-box', 'required' => true]) }}
 
-        <p class="footer-text text-small"><a href="register">新規ユーザーの方はこちら</a></p>
+            {{ Form::submit('LOGIN',['class' => 'btn submit-button login-register-button']) }}
 
-    {!! Form::close() !!}
+            <p class="footer-text text-small"><a href="register">新規ユーザーの方はこちら</a></p>
+
+        {!! Form::close() !!}
+
+    </main>
 
 </x-logout-layout>

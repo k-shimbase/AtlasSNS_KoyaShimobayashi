@@ -12,23 +12,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
+    //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // ◆登録画面(GET)
+    //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function create(): View
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-
+    //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // ◆登録処理(POST)
+    //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function store(Request $request): RedirectResponse
     {
         // ◆バリデーションの実装
@@ -38,20 +36,28 @@ class RegisteredUserController extends Controller
             'password' => 'required|min:8|max:20|alpha_num|confirmed',
         ]);
 
-        // ◆ユーザの追加
-        User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            // ◆ユーザの追加
+            User::create([
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        // ◆セッション登録
-        session(['username' => $request->username]);
+            // ◆セッション登録
+            session(['username' => $request->username]);
 
-        // ◆addedのURLへリダイレクトする
-        return redirect()->route('added');
+            // ◆addedのURLへリダイレクトする
+            return redirect()->route('added');
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            Log::error($e->getMessage());
+        }
     }
 
+    //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // ◆登録完了画面表示(GET)
+    //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public function added(): View
     {
         return view('auth.added');

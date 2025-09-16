@@ -7,7 +7,7 @@
         <meta name="description" content="ページの内容を表す文章" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title></title>
+        <title>AtlasSNS</title>
 
         <!--CDN経由CSS読み込み(BootstrapとBootstrap icon)-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
