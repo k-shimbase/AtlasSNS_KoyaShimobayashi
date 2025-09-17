@@ -2,7 +2,7 @@
 
     <main>
 
-        {!! Form::open(['url' => '/login', 'method' => 'post', 'class' => 'form_content']) !!}
+        {!! Form::open(['route' => 'login.store', 'method' => 'post', 'class' => 'form_content']) !!}
 
             <p class="subtitle">AtlasSNSへようこそ</p>
 

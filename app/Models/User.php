@@ -98,9 +98,9 @@ class User extends Authenticatable
     public static function getSearchUser($searchText, $loginUser) {
 
         //◇自身のidを除外する条件をクエリビルダで追加
-        $query = self::where('id', '!=', $loginUser);
+        $query = User::where('id', '!=', $loginUser);
 
-        //◇searchTextが空であった際、Like指定の条件をクエリビルダで追加
+        //◇searchTextが空ではなかった際、Like指定の条件をクエリビルダで追加
         if (!empty($searchText)) {
             $query->where('username', 'like', '%' . $searchText . '%');
         }

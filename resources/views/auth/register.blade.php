@@ -2,7 +2,7 @@
 
     <main>
 
-        {!! Form::open(['url' => '/register', 'method' => 'post', 'class' => 'form_content']) !!}
+        {!! Form::open(['route' => 'register.store', 'method' => 'post', 'class' => 'form_content']) !!}
 
         <h2 class="subtitle">新規ユーザー登録</h2>
 

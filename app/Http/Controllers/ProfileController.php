@@ -91,7 +91,7 @@ class ProfileController extends Controller
             //◇Viewの呼び出し
             return view('profiles.profile', ['user' => $user, 'posts' => $posts]);
 
-        //◆存在しないidが指定された際にtopへと戻る
+        //◆存在しないidが指定された際にtopへと戻る(findOrFailで指定したものが存在しなかった際、ModelNotFoundExceptionを投げる)
         } catch (ModelNotFoundException $e) {
             return redirect()->route('auth.home');
         }

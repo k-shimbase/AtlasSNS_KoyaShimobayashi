@@ -55,7 +55,8 @@ class Post extends Model
     //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     public static function getPostForUniqueUser($user) {
 
-        //◇find想定(Userインスタンス)である為pluckは利用できない
+        //◇find想定(Userインスタンス)
+        //◇getPostForUsersのようにpluckを指定してしまうと想定外の挙動をする(pluckはコレクション専用でありfindは単一Userインスタンスを取得する為対象外。故に単体と複数で関数を別けている)
         return Post::where('user_id', $user->id)
             ->latest()
             ->get();

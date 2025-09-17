@@ -10,11 +10,11 @@ Route::middleware('guest')->group(function () {
 
     //◆ログイン
     Route::get('login', [AuthenticatedSessionController::class, 'login'])->name('login');
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 
     //◆登録
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('register', [RegisteredUserController::class, 'store'])->name('register.store');
 
     //◆登録完了画面
     Route::get('added', [RegisteredUserController::class, 'added'])->name('added');
